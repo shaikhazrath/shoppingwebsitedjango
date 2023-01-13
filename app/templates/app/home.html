@@ -1,0 +1,76 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block main-content %}
+<div class="home-container">
+  <div class="hero-container">
+    <div class="h-text-c">
+      <h1 class="h-text">
+        Bring <br> the Hype
+      </h1>
+      <h3 class="sub">Unleash your fashion</h3>
+    </div>
+    <div class="h-img-c">
+      <img src="../../static/app/images/banner/shoes.png" alt="" class="h-img">
+
+    </div>
+  </div>
+  <div class="hero-offer-notification">
+    <div class="offer-notification-cont">
+      <p class="notification-title " id='nt'><small style="font-size:14px; margin-right: 10px;">Sixtharena * * </small>
+        Sale is
+        <span class="key">Live</span> now !!!
+        <small style="font-size:14px; margin-left: 10px;"> * * Sixtharena</small>
+      </p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div  class="sec prod " id="topwear">
+    <p class="sec-title"> Shirts </p>
+    <div class="home-products">
+      {% for t in topwear %}
+      <div class="card">
+        <a href="{% url 'product-detail' t.id %}" class="product-img">
+          <img src="{{t.product_image.url}}" class="card-img-top skeleton" alt="...">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{t.title}}</h5>
+          <p class="card-text">₹ {{t.selling_price}}/-</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div  class="sec prod " id="Shoes">
+    <p class="sec-title"> Shoes </p>
+    <div class="home-products">
+      {% for t in shoes %}
+      <div class="card">
+        <a href="{% url 'product-detail' t.id %}" class="product-img">
+          <img src="{{t.product_image.url}}" class="card-img-top skeleton" alt="...">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{t.title}}</h5>
+          <p class="card-text">₹ {{t.selling_price}}/-</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+ 
+
+</div>
+<hr>
+
+{% endblock main-content %}

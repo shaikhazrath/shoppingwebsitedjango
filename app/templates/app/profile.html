@@ -1,0 +1,58 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+<hr>
+<div class="profile-cont">
+  <div class="profile-form">
+    <h1>profile</h1>
+    <form action=" " style="display: flex; flex-direction: column;" method="post">
+      {% csrf_token %}
+      {% for fm in form %}
+      {{fm.label_tag}}
+      {{fm}}
+      {{fm.errors | striptags}}
+      {% endfor %}
+      <button class="profile-btn" type='submit'>submit</button>
+    </form>
+  </div>
+
+  <div class="card-cont">
+    {% for ad in add %}
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <form action=" " method="post">
+          {% csrf_token %}
+          <li class="list-group-item">name : {{ad.name}}</li>
+          <li class="list-group-item">locality : {{ad.locality}}</li>
+          <li class="list-group-item">city : {{ad.city}}</li>
+          <li class="list-group-item">state : {{ad.state}}</li>
+          <li class="list-group-item">zipcode : {{ad.zipcode}}</li>
+          <li class="list-group-item">phoneNumber : {{ad.phoneNumber}}</li>
+
+          <a href="{% url 'customer-delete' ad.id %}" class="btn-danger">delete</a>
+        </form>
+      </ul>
+    </div>
+    {% endfor %}
+    <div class="logout">
+      <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+
+      <a class="logout-btn" href="{% url 'passwordchange' %}">Changepassword</a>
+
+
+    </div>
+  </div>
+</div>
+{% if messages %}
+{% for message in messages %}
+<div class="msg-cont" id='msg-cont'>
+  <ion-icon name="checkmark-circle-outline" class="ico-ti"></ion-icon>
+  <p class="message-text" id='msg'>
+    {{message}}
+  </p>
+</div>
+{% endfor %}
+{% endif %}
+<hr>
+{% endblock main-content %}
