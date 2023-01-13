@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.55.108','web-production-1982.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['web-production-1982.up.railway.app']
